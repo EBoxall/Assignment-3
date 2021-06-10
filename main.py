@@ -1,3 +1,4 @@
+charlist = [(s) for s in input("please input a string of charcters seperated by spaces\n").split()]
 
 def listsplitter (charlist):
   stringlist = []
@@ -9,13 +10,20 @@ def listsplitter (charlist):
       stringlist.append(i)
   return stringlist, numlist
 
-def numbersorter(numlist):
-  orderedlist = []
-  for index, element in enumerate(numlist):
-    if index % 2 != 0:
-      orderedlist.append(element)
-  orderedlist.sort(reverse=True)
-  return orderedlist
+x, y = listsplitter(charlist)
+y = [int(i) for i in y]
 
-charlist = [(s) for s in input("please input a string of charcters seperated by spaces\n").split()]
-print(listsplitter(charlist))
+print(y)
+def numbersorter(y):
+  result = []
+  orderedlist = []
+  orderedlist = sorted(y[1::2],reverse = True)
+  del y[1::2]
+  result = [None]*(len(y)+len(orderedlist))
+  result[::2] = y
+  result[1::2] = orderedlist
+  return result
+
+
+print("The string you inputted has been seperated into numbers and words\n",listsplitter(charlist))
+print("The new ordered numberstring skipping every second number is\n", numbersorter(y))
